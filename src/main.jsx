@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import useState from "./hook/useState";
 import useMemo from "./hook/useMemo";
+import useEffect from "./hook/useEffect";
 
 window.hookStates = [];
 window.hookIndex = 0;
@@ -11,6 +12,10 @@ function App() {
   const [count2, setCount2] = useState(0);
 
   const doubleCount1 = useMemo(() => count1 * 2, [count1]);
+
+  useEffect(() => {
+    console.log(`count1 change`);
+  }, [count1]);
 
   return (
     <div className="App">
