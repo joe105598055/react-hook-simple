@@ -1,4 +1,4 @@
-import { render } from "../../main";
+import { render } from "../main";
 
 const useState = (initialState) => {
   let currentIndex = hookIndex;

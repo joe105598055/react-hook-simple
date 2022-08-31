@@ -11,13 +11,18 @@ function useEffect(callback, deps) {
       hookIndex++;
     } else {
       lastDestory && lastDestory();
-      const destory = callback();
-      hookStates[hookIndex++] = [destory, deps];
+      // 建立macro task
+      setTimeout(() => {
+        const destory = callback();
+        hookStates[hookIndex++] = [destory, deps];
+      });
     }
   } else {
     // 未緩存過
-    const destory = callback();
-    hookStates[hookIndex++] = [destory, deps];
+    setTimeout(() => {
+      const destory = callback();
+      hookStates[hookIndex++] = [destory, deps];
+    });
   }
 }
 
